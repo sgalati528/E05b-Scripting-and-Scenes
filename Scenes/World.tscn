@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/paddle.gd" type="Script" id=1]
 [ext_resource path="res://Assets/paddle.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/ball.gd" type="Script" id=3]
 [ext_resource path="res://Assets/ball.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Tile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/OstrichSans-Heavy.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scripts/world.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/lives.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/score.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 53.311, 12.2888 )
@@ -16,7 +20,16 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id=3]
 radius = 12.018
 
+[sub_resource type="DynamicFont" id=4]
+size = 18
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 18
+font_data = ExtResource( 6 )
+
 [node name="World" type="Node"]
+script = ExtResource( 7 )
 
 [node name="Paddle" type="KinematicBody2D" parent="."]
 position = Vector2( 512, 544 )
@@ -281,3 +294,26 @@ position = Vector2( 772, 384 )
 
 [node name="Tile11" parent="Tiles/Yellow Tiles" instance=ExtResource( 5 )]
 position = Vector2( 840, 384 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = 3.78149
+margin_right = 43.7815
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "Score: "
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lives" type="Label" parent="."]
+margin_left = 957.979
+margin_top = 2.521
+margin_right = 997.979
+margin_bottom = 16.521
+custom_fonts/font = SubResource( 5 )
+text = "Lives: "
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
