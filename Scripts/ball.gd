@@ -3,14 +3,14 @@ extends RigidBody2D
 export var maxspeed = 300
 
 signal lives
-signal socre
+signal score
 
 func _ready():
 	contact_monitor = true
 	set_max_contacts_reported(4)
 	var WorldNode = get_node("/root/World")
-	connect("score",WorldNode,"increase_score")
-	connect("lives",WorldNode,"decrease_lives")
+	connect("score", WorldNode, "increase_score")
+	connect("lives", WorldNode, "decrease_lives")
 
 func _physics_process(delta):
 	var bodies = get_colliding_bodies()
@@ -23,4 +23,4 @@ func _physics_process(delta):
 	if position.y > get_viewport_rect().end.y:
 		emit_signal("lives")
 		queue_free()
-		print("Died")
+
