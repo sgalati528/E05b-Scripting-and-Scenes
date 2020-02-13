@@ -5,7 +5,7 @@ export var lives = 3
 
 func increase_score(s):
 	score += int(s)
-	find_node("Score: ").update_score()
+	find_node("Score").update_score()
 	
 func decrease_lives():
 	lives -= 1
